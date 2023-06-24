@@ -36,5 +36,4 @@ with open("test.pkl", 'wb') as file:
 
 with (open("test.pkl", "rb")) as openfile:
     new_list = pickle.load(openfile)
-
 print(new_list[0][0].number)
