@@ -17,9 +17,7 @@ Two_pairs = [] * 6
 One_pair = [] * 6
 High_card = [] * 6
 
-count = 0
 for i in Base:
-    print (str(count) + " in " + str(len(Base)))
     count = count + 1
     if IdSF(i):
         Org = OrgSF(i)
