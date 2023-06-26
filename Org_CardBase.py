@@ -7,44 +7,72 @@ import pandas as pd
 with open("Card_Base.pkl", 'rb') as file:
     Base = pickle.load(file)
 
-Straight_flush = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Four_kind = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Full_house = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Flush = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Straight = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Three_kind = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-Two_pairs = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-One_pair = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
-High_card = pd.DataFrame(columns=['Index', 'Card1', 'Card2', 'Card3', 'Card4', 'Card5'])
+Straight_flush = [] * 6
+Four_kind = [] * 6
+Full_house = [] * 6
+Flush = [] * 6
+Straight = [] * 6
+Three_kind = [] * 6
+Two_pairs = [] * 6
+One_pair = [] * 6
+High_card = [] * 6
 
+count = 0
 for i in Base:
+    print (str(count) + " in " + str(len(Base)))
+    count = count + 1
     if IdSF(i):
         Org = OrgSF(i)
-        Straight_flush.loc[len(Straight_flush.index)] = [0, Org[0], Org[1],Org[2],Org[3],Org[4]]
+        Org.insert(0,0)
+        Straight_flush.append(Org)
     elif IdFK(i):
         Org = OrgFK(i)
-        Four_kind.loc[len(Four_kind.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Four_kind.append(Org)
     elif IdFH(i):
         Org = OrgFH(i)
-        Full_house.loc[len(Full_house.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Full_house.append(Org)
     elif IdFl(i):
         Org = OrgFl(i)
-        Flush.loc[len(Flush.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Flush.append(Org)
     elif IdSt(i):
         Org = OrgSt(i)
-        Straight.loc[len(Straight.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Straight.append(Org)
     elif IdTK(i):
         Org = OrgTK(i)
-        Three_kind.loc[len(Three_kind.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Three_kind.append(Org)
     elif IdTP(i):
         Org = OrgTP(i)
-        Two_pairs.loc[len(Two_pairs.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        Two_pairs.append(Org)
     elif IdOP(i):
         Org = OrgOP(i)
-        One_pair.loc[len(One_pair.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
+        Org.insert(0, 0)
+        One_pair.append(Org)
     else:
         Org = OrgHC(i)
-        High_card.loc[len(High_card.index)] = [0, Org[0], Org[1], Org[2], Org[3], Org[4]]
-print (len(Base))
-total = len(Straight_flush.index)+len(Four_kind.index)+len(Full_house.index)+len(Flush.index)+len(Straight.index)+len(Three_kind.index)+len(Two_pairs.index)+len(One_pair.index)+len(High_card.index)
-print(total)
+        Org.insert(0, 0)
+        High_card.append(Org)
+
+with open("Straight_flush.pkl", 'wb') as file:
+    pickle.dump(Straight_flush,file)
+with open("Four_kind.pkl", 'wb') as file:
+    pickle.dump(Four_kind,file)
+with open("Full_house.pkl", 'wb') as file:
+    pickle.dump(Flush,file)
+with open("Flush.pkl", 'wb') as file:
+    pickle.dump(Straight_flush,file)
+with open("Straight.pkl", 'wb') as file:
+    pickle.dump(Straight,file)
+with open("Three_kind.pkl", 'wb') as file:
+    pickle.dump(Three_kind,file)
+with open("Two_pairs.pkl", 'wb') as file:
+    pickle.dump(Two_pairs,file)
+with open("One_pair.pkl", 'wb') as file:
+    pickle.dump(One_pair,file)
+with open("High_card.pkl", 'wb') as file:
+    pickle.dump(High_card,file)
