@@ -63,9 +63,9 @@ with open("Straight_flush.pkl", 'wb') as file:
 with open("Four_kind.pkl", 'wb') as file:
     pickle.dump(Four_kind,file)
 with open("Full_house.pkl", 'wb') as file:
-    pickle.dump(Flush,file)
+    pickle.dump(Full_house,file)
 with open("Flush.pkl", 'wb') as file:
-    pickle.dump(Straight_flush,file)
+    pickle.dump(Flush,file)
 with open("Straight.pkl", 'wb') as file:
     pickle.dump(Straight,file)
 with open("Three_kind.pkl", 'wb') as file:
