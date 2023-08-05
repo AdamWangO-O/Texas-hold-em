@@ -9,11 +9,8 @@ import pickle
 
 # Define a Card class including suit and number:
 class Card:
-    suits = ['S', 'H', 'D', 'C']  # Spade, Heart, Diamond, Club
-    numbers = [14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2]
-
     def __eq__(self, other):
-        if (self.suits == other.suits) and (self.numbers == other.numbers):
+        if (self.suit == other.suit) and (self.number == other.number):
             return True
         else:
             return False
