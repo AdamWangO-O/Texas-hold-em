@@ -46,6 +46,9 @@ def Creat_Cat(deck,stage):
     return Cat
 
 Cat = Creat_Cat(Deck,2)
+Private_Data = os.path.join("D:\Texas hold em\Card_Base", "Private.pkl")
+with open(Private_Data, 'wb') as file:
+    pickle.dump(Cat, file)
 for i in Cat:
     i[3] = str(i[0].suit) + str(i[0].number) + str(i[1].suit) + str(i[1].number)
     path = "D:\Texas hold em\Card_Base"
@@ -54,6 +57,9 @@ for i in Cat:
     sub_dir = i[3]
     Flop_deck = Del_Card(sub_dir,Deck)
     Flop = Creat_Cat(Flop_deck,3)
+    Flop_Data = os.path.join(path, "Flop.pkl")
+    with open(Flop_Data, 'wb') as file:
+        pickle.dump(Flop, file)
     for j in Flop:
         j[4] = str(j[0].suit) + str(j[0].number) + str(j[1].suit) + str(j[1].number) + str(j[2].suit) + str(j[2].number)
         Flop_path =os.path.join(path,j[4])
@@ -61,6 +67,9 @@ for i in Cat:
         sub_dir = j[4]
         Turn_deck = Del_Card(sub_dir,Flop_deck)
         Turn = Creat_Cat(Turn_deck,1)
+        Turn_Data = os.path.join(Flop_path, "Turn.pkl")
+        with open(Turn_Data, 'wb') as file:
+            pickle.dump(Turn, file)
         for k in Turn:
             k[2] = str(k[0].suit) + str(k[0].number)
             Turn_path = os.path.join(Flop_path, k[2])
